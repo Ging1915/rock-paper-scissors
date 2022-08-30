@@ -1,0 +1,101 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: ;
+    background-color: #ccc;
+}
+
+header {
+    font-size: 45px;
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.game {
+    background-color: bisque;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.game h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+}
+
+.game ul {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    list-style: none;
+    gap: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.game p {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+    margin-left: 200px;
+    margin-right: 200px;
+   
+}
+
+.score {
+    display: flex;
+    justify-content: space-around;
+}
+
+.player{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.computer {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+h6 {
+    font-size: 20px;
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    font-size: 25px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+}
+
+button {
+    padding: 50px;
+    font-size: 30px;
+    border-radius: 10px;
+    background-color: rgb(7, 119, 107);
+}
+
