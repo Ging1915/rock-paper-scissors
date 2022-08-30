@@ -1,6 +1,6 @@
 
 
-let randomNumber = Math.floor(Math.random() * 3)
+//let randomNumber = Math.floor(Math.random() * 3)
 let playerScore = 0
 let computerScore = 0
 let message = ''
