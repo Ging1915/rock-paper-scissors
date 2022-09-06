@@ -4,7 +4,6 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    justify-content: ;
     background-color: #ccc;
 }
 
@@ -90,6 +89,8 @@ footer {
   display: flex;
   justify-content: center;
   padding-bottom: 30px;
+  color: #ccc;
+  background-color: darkblue;
 }
 
 button {
@@ -97,5 +98,18 @@ button {
     font-size: 30px;
     border-radius: 10px;
     background-color: rgb(7, 119, 107);
+}
+
+.reset {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+   
+}
+
+.reset button {
+    color: aqua;
+    background-color: black;
+    padding: 20px;
 }
 

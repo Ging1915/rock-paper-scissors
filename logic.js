@@ -1,78 +1,75 @@
+const playerOption = document.querySelectorAll('.game ul button');
+const roundResult = document.querySelector('#displayResult');
+const playerPoints = document.querySelector('#playerTotal');
+const computerPoints = document.querySelector('#computerTotal');
+const resetButton = document.querySelector('#resetButton');
+
+resetButton.addEventListener('click',() => location.reload())
+
+playerOption.forEach(button =>{button.addEventListener('click',getPlayerChoice)});
+
+let computerChoice = [{choice: 'Rock', value: 0}, {choice: 'Paper', value: 1}, {choice: 'Scissors', value: 2}];
+let playerScore = 0;
+let computerScore = 0;
+let playerChoice;
 
 
-//let randomNumber = Math.floor(Math.random() * 3)
-let playerScore = 0
-let computerScore = 0
-let message = ''
+function computerGuess(){
+    let result = computerChoice[Math.floor(Math.random() * computerChoice.length)];
+    return result;
+} 
 
-function computerSelection (randomNumber) {
-    if (randomNumber == 0) {
-        computerGuess = 'rock';
-        return computerGuess;
-    }
-    else if (randomNumber == 1) {
-        computerGuess = 'paper';
-        return computerGuess;
-    }
-    else {
-        computerGuess = 'scissors';
-        return computerGuess;
-    }
-}
 
-function playRound (computerSelection){
+function round (playerSelection, computerSelection) {
+    let roundWinCombo = `${playerSelection}-${computerSelection.value}`;
+    let playerWinCombo = ['1-0', '0-2', '2-1'];
 
-    playerChoice = prompt('What will it be Rock Paper or Scissors?');
-
-    if (playerChoice == 'rock' && computerSelection == 'scissors'){
-        playerScore = playerScore + 1;
-        message = 'You won! Rock beats Scissors';
-        return [message, playerScore]
+    if (Number(playerSelection) === computerSelection.value) {
+        playerPoints.textContent = ++playerScore;
+        computerPoints.textContent = ++computerScore;
+        roundResult.textContent = "Tie!";
     }
-    else if (playerChoice == 'paper' && computerSelection == 'rock'){
-        playerScore = playerScore + 1;
-        message = 'You won! Paper beats Rock';
-        return [message, playerScore]
-    }
-    else if (playerChoice == 'scissors' && computerSelection == 'paper'){
-        playerScore = playerScore + 1;
-        message = 'You won! Scissors beats Paper';
-        return [message, playerScore]
-    }
-    else if (computerSelection == 'rock' && playerChoice == 'scissors'){
-        computerScore = computerScore + 1;
-        message = 'You lost! Rock beats Scissors';
-        return [message, computerScore]
-    }
-    else if (computerSelection == 'paper' && playerChoice == 'rock'){
-        computerScore = computerScore + 1;
-        message = 'You lost! Paper beats Rock';
-        return [message, computerScore]
-    }
-    else if (computerSelection == 'scissors' && playerChoice == 'paper'){
-        computerScore = computerScore + 1;
-        message = 'You lost! Scissors beats Paper';
-        return [message, computerScore]
+    else if (playerWinCombo.includes(roundWinCombo)) {
+        playerPoints.textContent = ++playerScore;
+        roundResult.textContent = `You win! ${playerChoice} beats ${computerSelection.choice}`;
     }
     else {
-        computerScore = computerScore + 1;
-        playerScore = playerScore + 1;
-        message = 'Its a tie!'
-        return [message, playerScore, computerScore]
+        computerPoints.textContent = ++computerScore
+        roundResult.textContent = `You lose! ${computerSelection.choice} beats ${playerChoice}`;
     }
-}
-console.log(playRound(computerSelection(randomNumber)))
-
-
-console.log (playRound)
-
-function game(playRound){
-    let i = 0
-    while (i < 5){
-    playRound();
-    i = i + 1;
-    }
+checkWinner();
 }
 
+const winnerResults = {
+    computer: ['You lost the game to the computer!'],
+    player: ['You won the game!'],
+    tie: ['The game is a tie!']
+}
 
-console.log (game)
+function checkWinner() {
+    if (computerScore === 5 || playerScore ===5){
+        if (computerScore === playerScore){
+            updateWinner('tie')
+        }else {
+            let win = `${(computerScore > playerScore) ? 'computer' : 'player' }`;
+            updateWinner(win);
+        }
+    }
+}
+
+function updateWinner(winner){
+    roundResult.textContent = winnerResults[winner] [0];
+    roundResult.textContent = winnerResults [winner] [1];
+
+    playerOption.forEach(button => {
+        button.removeEventListener('click', getPlayerChoice);
+    });
+}
+
+
+function getPlayerChoice (e) {
+    let playerSelection = (e.target.id);
+    playerChoice = e.target.textContent;
+    round(playerSelection, computerGuess());
+}
+

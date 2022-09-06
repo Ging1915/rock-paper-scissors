@@ -13,25 +13,28 @@
     <section class="game">
         <h1>Choose your weapon!</h1>
         <ul>
-            <li><button class="rock">ROCK</button></li>
-            <li><button class="paper">PAPER</button></li>
-            <li><button class="scissors">SCISSORS</button></li>
+            <li><button id="0">Rock</button></li>
+            <li><button id="1">Paper</button></li>
+            <li><button id="2">Scissors</button></li>
         </ul>
-        <p>yo</p>
+        <p id="displayResult">yo</p>
         <div class="score">
             <div class="player">
                 <h3>Player Score</h3>
-                <h6>1</h6>
+                <h6 id="playerTotal">0</h6>
             </div>
             <div class="computer">
                 <h3>Computer Score</h3>
-                <h6>1</h6>
+                <h6 id="computerTotal">0</h6>
             </div>
         </div>
     </section>
     <section class="info">
-        <h3>This game concludes when either the player or computers score reaches 5!</h3>
+        <h3>This game concludes when either the players or computers score reaches 5!</h3>
     </section>
+    <div class="reset">
+        <button id="resetButton">Play Again!</button>
+    </div>
     <footer>
         <H2>Created By- Brent Monroe</H2>
     </footer>
